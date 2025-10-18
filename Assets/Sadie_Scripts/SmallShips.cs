@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class SmallShips : IEnemyBuilder
 {
-   private Enemy enemy;
+    private Enemy enemy = new Enemy();
 
-   public Enemy GetEnemy()
+    public Enemy GetEnemy()
     {
         return enemy;
     } 

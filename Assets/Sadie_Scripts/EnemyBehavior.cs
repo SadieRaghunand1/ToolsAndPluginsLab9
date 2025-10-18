@@ -24,6 +24,8 @@ public class EnemyBehavior : MonoBehaviour, IEnemy
         playerControls = FindAnyObjectByType<PlayerControls>();
         onHit += playerControls.Callback_IncreaseScore;
         onHit += OnHit;
+
+
     }
 
     // Update is called once per frame
@@ -69,6 +71,9 @@ public class EnemyBehavior : MonoBehaviour, IEnemy
             rb.MovePosition(new Vector2(rb.position.x + -speed, rb.position.y));
         }
 
-        
+    }
+    public void SetupFromData(Enemy enemyData)
+    {
+        speed = enemyData.Speed * 0.1f;
     }
 }

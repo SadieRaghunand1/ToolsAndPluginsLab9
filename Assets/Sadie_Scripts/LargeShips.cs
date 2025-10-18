@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LargeShips : IEnemyBuilder
 {
-    private Enemy enemy;
+    private Enemy enemy = new Enemy();
 
     public Enemy GetEnemy()
     {
