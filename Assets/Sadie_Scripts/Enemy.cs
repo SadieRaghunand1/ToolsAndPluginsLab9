@@ -8,10 +8,10 @@ public class Enemy
 
     public string Ship { get; set; }
     public int Points { get; set; }
-    public int Size {  get; set; }
-    public int Speed {  get; set; }
+    public int Speed { get; set; }
 
     #endregion
+
 
     public void ShowTest()
     {
