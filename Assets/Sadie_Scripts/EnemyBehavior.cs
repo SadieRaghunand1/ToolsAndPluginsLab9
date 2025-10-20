@@ -14,16 +14,17 @@ public class EnemyBehavior : MonoBehaviour, IEnemy
     float leftBound = -10;
     float rightBound = 10;
     float speed = 0.2f;
-
-    public delegate void Event_OnHit();
+    private int points;
+    public delegate void Event_OnHit(int points);
     Event_OnHit onHit;
 
+  
     // Start is called before the first frame update
     void Start()
     {
         playerControls = FindAnyObjectByType<PlayerControls>();
         onHit += playerControls.Callback_IncreaseScore;
-        onHit += OnHit;
+        onHit += _ => OnHit();
 
 
     }
@@ -43,7 +44,7 @@ public class EnemyBehavior : MonoBehaviour, IEnemy
         if (collision.gameObject.layer == 6)
         {
             playerControls.ReturnToPool(collision.gameObject);
-            onHit.Invoke();
+            onHit?.Invoke(points);
 
         }
     }
@@ -75,5 +76,12 @@ public class EnemyBehavior : MonoBehaviour, IEnemy
     public void SetupFromData(Enemy enemyData)
     {
         speed = enemyData.Speed * 0.1f;
+        points = enemyData.Points;
+
+        transform.localScale = Vector3.one * enemyData.Scale;
+
+        SpriteRenderer sr = GetComponent<SpriteRenderer>();
+
+        sr.color = enemyData.Color;
     }
 }

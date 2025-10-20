@@ -36,6 +36,19 @@ public class EnemySpawner : MonoBehaviour
         builder.Speed();
         builder.PointValue();
 
+        switch (random)
+        {
+            case 0: // SmallShips
+                builder.SetColor(Color.green).SetScale(0.8f);
+                break;
+            case 1: // MediumShips
+                builder.SetColor(Color.yellow).SetScale(1.2f);
+                break;
+            case 2: // LargeShips
+                builder.SetColor(Color.red).SetScale(1.5f);
+                break;
+        }
+
         Enemy enemyData = builder.GetEnemy();
 
         // Spawn it in the world

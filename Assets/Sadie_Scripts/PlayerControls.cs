@@ -71,9 +71,9 @@ public class PlayerControls : MonoBehaviour
         _bullet.SetActive(false);
     }
 
-    public void Callback_IncreaseScore()
+    public void Callback_IncreaseScore(int points)
     {
-        score++;
+        score += points;
         scoreTxt.text = score.ToString();
     }
 }

@@ -9,5 +9,7 @@ public interface IEnemyBuilder
 
     IEnemyBuilder Speed();
     IEnemyBuilder PointValue();
+    IEnemyBuilder SetColor(Color color);
+    IEnemyBuilder SetScale(float scale);
 
 }

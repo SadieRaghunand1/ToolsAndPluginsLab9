@@ -29,14 +29,17 @@ public class SmallShips : IEnemyBuilder
         enemy.Points = 4;
         return this;
     }
-
-    public IEnemyBuilder Setall()
+    public IEnemyBuilder SetColor(Color color)
     {
-       
-        Speed();
-        PointValue();
+        enemy.Color = color;
         return this;
-
     }
+
+    public IEnemyBuilder SetScale(float scale)
+    {
+        enemy.Scale = scale;
+        return this;
+    }
+
 
 }

@@ -29,12 +29,16 @@ public class LargeShips : IEnemyBuilder
         enemy.Points = 2;
         return this;
     }
-
-    public IEnemyBuilder Setall()
+    public IEnemyBuilder SetColor(Color color)
     {
-        Speed();
-        PointValue();
+        enemy.Color = color;
         return this;
-
     }
+
+    public IEnemyBuilder SetScale(float scale)
+    {
+        enemy.Scale = scale;
+        return this;
+    }
+
 }
