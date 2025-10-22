@@ -84,4 +84,15 @@ public class EnemyBehavior : MonoBehaviour, IEnemy
 
         sr.color = enemyData.Color;
     }
+
+    public Enemy GetData()
+    {
+        Enemy newEnemy = new Enemy();  
+        newEnemy.Speed = (int)speed;
+        newEnemy.Scale = transform.localScale.x;
+        newEnemy.Color = GetComponent<SpriteRenderer>().material.color;
+        return newEnemy;
+    }
+
+    
 }
