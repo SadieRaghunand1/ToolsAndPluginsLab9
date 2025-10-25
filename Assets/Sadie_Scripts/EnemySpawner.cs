@@ -22,7 +22,7 @@ public class EnemySpawner : MonoBehaviour
         }
     }
 
-    void SpawnEnemy()
+    public GameObject SpawnEnemy()
     {
         int random = Random.Range(0, 3);
         IEnemyBuilder builder = random switch
@@ -60,5 +60,7 @@ public class EnemySpawner : MonoBehaviour
         behavior.SetupFromData(enemyData);
 
         Debug.Log($"Spawned: {enemyData.Ship} | Speed: {enemyData.Speed} | Points: {enemyData.Points}");
+
+        return newEnemy;
     }
 }

@@ -9,6 +9,7 @@ public class TransformerSave : MonoBehaviour, ISaveable
 {
     Data enemyData = new Data();
     private static string locationsPath;
+    [SerializeField] private EnemySpawner spawner;
 
     private void Start()
     {
@@ -43,10 +44,23 @@ public class TransformerSave : MonoBehaviour, ISaveable
         string json = File.ReadAllText(locationsPath);
         enemyData = JsonUtility.FromJson<Data>(json);
 
-        //Create an enemy with saved data
-        GameObject _e = 
-
-        //Move enemy to saved position
+        //Delete any enemies in the scene already
+        EnemyBehavior[] _currentEnemies = FindObjectsByType<EnemyBehavior>(FindObjectsSortMode.None);
+        for(int i = 0; i < _currentEnemies.Length; i++)
+        {
+            Destroy(_currentEnemies[i].gameObject);
+        }
+        
+        //Load in enemies from the file
+        for(int i = 0; i < enemyData.enemyPositions.Count; i++)
+        {
+            //Create an enemy with saved data
+            GameObject _e = spawner.SpawnEnemy();
+            //Move enemy to saved position
+            _e.transform.position = enemyData.enemyPositions[i];
+            Debug.Log(_e.transform.position);
+        }
+        
     }
 
 }
@@ -55,9 +69,9 @@ public class TransformerSave : MonoBehaviour, ISaveable
 public class Data
 {
     public List<Enemy> enemyData = new List<Enemy>();
-    public int speed;
+    /*public int speed;
     public float scale;
-    public Color sColor;
+    public Color sColor;*/
     public List<Vector2> enemyPositions = new List<Vector2>();
 
     public void GetAllEnemiesPos(EnemyBehavior[] _enemyPos)
@@ -65,10 +79,10 @@ public class Data
         for(int i = 0; i < _enemyPos.Length; i++)
         {
             enemyPositions.Add(_enemyPos[i].transform.position);
-            enemyData.Add(_enemyPos[i].GetData());
+/*            enemyData.Add(_enemyPos[i].GetData());
             speed = enemyData[i].Speed;
             scale = enemyData[i].Scale;
-            sColor = enemyData[i].Color;
+            sColor = enemyData[i].Color;*/
         }
     }
 }

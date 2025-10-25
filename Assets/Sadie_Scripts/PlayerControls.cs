@@ -54,12 +54,12 @@ public class PlayerControls : MonoBehaviour
 
     public void SavePlayer()
     {
-        BinarySaveScore.SavePlayer(this);
+        BinaryScoreSave.SavePlayer(this);
     }
 
     public void LoadPlayer()
     {
-        PlayerData data = BinarySaveScore.LoadPlayer();
+        PlayerData data = BinaryScoreSave.LoadPlayer();
 
         score = data.score;
     }

@@ -14,7 +14,7 @@ public static class  BinaryScoreSave
     {
         BinaryFormatter formatter = new BinaryFormatter();
 
-        string path = Application.persistentDataPath + "/ScoreData.txt";
+        string path = UnityEngine.Application.persistentDataPath + "/ScoreData.txt";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(player);
@@ -25,7 +25,7 @@ public static class  BinaryScoreSave
 
     public static PlayerData LoadPlayer()
     {
-        string path = Application.persistentDataPath + "/ScoreData.txt";
+        string path = UnityEngine.Application.persistentDataPath + "/ScoreData.txt";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -38,7 +38,7 @@ public static class  BinaryScoreSave
         }
         else
         {
-            Debug.LogError("Save file not found in " + path);
+            UnityEngine.Debug.LogError("Save file not found in " + path);
             return null;
         }
 
