@@ -12,10 +12,10 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
 
-    private int score;
+    public int score;
 
     [SerializeField] private TextMeshProUGUI scoreTxt;
-    // Start is called before the first frame update
+    
     void Start()
     {
         CreatePool();
@@ -25,6 +25,16 @@ public class PlayerControls : MonoBehaviour
     void Update()
     {
         Shoot();
+
+        if (Input.GetKeyDown(KeyCode.K))
+        {
+            SavePlayer();
+        }
+
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadPlayer();
+        }
     }
 
     private void FixedUpdate()
@@ -41,6 +51,19 @@ public class PlayerControls : MonoBehaviour
             pool[i].SetActive(false);
         }
     }
+
+    public void SavePlayer()
+    {
+        BinarySaveScore.SavePlayer(this);
+    }
+
+    public void LoadPlayer()
+    {
+        PlayerData data = BinarySaveScore.LoadPlayer();
+
+        score = data.score;
+    }
+
 
     void Shoot()
     {

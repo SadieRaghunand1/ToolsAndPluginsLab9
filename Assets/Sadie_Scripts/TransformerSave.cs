@@ -21,7 +21,10 @@ public class TransformerSave : MonoBehaviour, ISaveable
             SaveGame();
         }
 
-        if (Input.GetKeyDown(KeyCode.L)) ;
+        if (Input.GetKeyDown(KeyCode.L))
+        {
+            LoadGame();
+        }
     }
 
     public void SaveGame()
