@@ -1,20 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
-using System.Diagnostics;
+using UnityEngine;
 using System.IO;
 using System.Runtime.Serialization.Formatters.Binary;
-using UnityEngine;
-using static System.Net.Mime.MediaTypeNames;
+
 
 
 
 public static class  BinaryScoreSave
 {
-    public static void SavePlayer(PlayerControls player)
+    public static void SavePlayer (PlayerControls player)
     {
         BinaryFormatter formatter = new BinaryFormatter();
 
-        string path = UnityEngine.Application.persistentDataPath + "/ScoreData.txt";
+        string path = Application.persistentDataPath + "\\ScoreData.txt";
         FileStream stream = new FileStream(path, FileMode.Create);
 
         PlayerData data = new PlayerData(player);
@@ -25,7 +22,7 @@ public static class  BinaryScoreSave
 
     public static PlayerData LoadPlayer()
     {
-        string path = UnityEngine.Application.persistentDataPath + "/ScoreData.txt";
+        string path = Application.persistentDataPath + "\\ScoreData.txt";
         if (File.Exists(path))
         {
             BinaryFormatter formatter = new BinaryFormatter();
@@ -38,7 +35,7 @@ public static class  BinaryScoreSave
         }
         else
         {
-            UnityEngine.Debug.LogError("Save file not found in " + path);
+            Debug.LogError("Save file not found in " + path);
             return null;
         }
 

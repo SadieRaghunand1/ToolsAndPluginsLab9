@@ -12,7 +12,7 @@ public class PlayerControls : MonoBehaviour
 
     [SerializeField] private Rigidbody2D rb;
 
-    public int score;
+    public int score = 0;
 
     [SerializeField] private TextMeshProUGUI scoreTxt;
     
