@@ -97,6 +97,6 @@ public class PlayerControls : MonoBehaviour
     public void Callback_IncreaseScore(int points)
     {
         score += points;
-        scoreTxt.text = score.ToString();
+        scoreTxt.text = string.Format("Score: {0000}", score);
     }
 }
