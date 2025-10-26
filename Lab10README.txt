@@ -1,0 +1,3 @@
+For the binary save score, the scripts "BinaryScoreSave" and "PlayerData" were added, while editing was done to the already made script, "Player Controls". In "PlayerControls" the save and loading functions would be added as well as the key triggers since that is where the player's score system is kept. 
+
+As for the JSON location saving, the scripts "ISaveable" and "TransformerSave" were added, while "Enemy Behavior" was edited. In "EnemyBehaviors" the function "GetData" would be added in order to reference the enemies locations in the "TransformerSave" script. 
